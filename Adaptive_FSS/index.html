@@ -56,29 +56,30 @@
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
-                <a href="" target="_blank">Li Hu</a>,</span>
+                <a href="" target="_blank">Jing Wang</a></sup>1</sup>,&nbsp;&nbsp;</span>
                 <span class="author-block">
-                  <a href="https://scholar.google.com/citations?user=cze1sXQAAAAJ&hl=en" target="_blank">Xin Gao</a>,</span>
+                  <a href="" target="_blank">Jiangyun Li</a></sup>1</sup>,&nbsp;&nbsp;</span>
                   <span class="author-block">
-                    <a href="https://scholar.google.com/citations?user=QTgxKmkAAAAJ&hl=zh-CN" target="_blank">Peng Zhang</a>,</span>
+                    <a href="" target="_blank">Chen Chen</a></sup>2</sup>,&nbsp;&nbsp;</span>
                     <span class="author-block">
-                      <a href="https://dblp.org/pid/69/476-9.html" target="_blank">Ke Sun</a>,</span>
+                      <a href="" target="_blank">Yisi Zhang</a></sup>1</sup>,&nbsp;&nbsp;</span>
                         <span class="author-block">
-                          <a href="https://dblp.org/pid/11/4046.html" target="_blank">Bang Zhang</a>,</span>
+                          <a href="" target="_blank">Haoran Shen</a></sup>1</sup>,&nbsp;&nbsp;</span>
                             <span class="author-block">
-                              <a href="https://scholar.google.com/citations?user=FJwtMf0AAAAJ&hl=zh-CN" target="_blank">Liefeng Bo</a>
+                              <a href="" target="_blank">Tianxiang Zhang</a></sup>1</sup>,&nbsp;&nbsp;</span>
                   </span>
                   </div>
 
                   <div class="is-size-5 publication-authors">
-                    <span class="author-block">Institute for Intelligent Computing，Alibaba Group</span>
+                    <span class="author-block"><sup>1</sup>University of Science and Technology Beijing</span>
+                    <span class="author-block"><sup>2</sup>University of Central Florida</span>
                   </div>
 
                   <div class="column has-text-centered">
                     <div class="publication-links">
                          <!-- Arxiv PDF link -->
                       <span class="link-block">
-                        <a href="https://arxiv.org/pdf/2311.17117.pdf" target="_blank"
+                        <a href="" target="_blank"
                         class="external-link button is-normal is-rounded is-dark">
                         <span class="icon">
                           <i class="fas fa-file-pdf"></i>
@@ -89,7 +90,7 @@
 
                     <!-- Video link -->
                     <span class="link-block">
-                      <a href="https://www.youtube.com/watch?v=8PCn5hLKNu4" target="_blank"
+                      <a href="" target="_blank"
                       class="external-link button is-normal is-rounded is-dark">
                       <span class="icon">
                         <i class="fab fa-youtube"></i>
@@ -100,7 +101,7 @@
 
                   <!-- Github link -->
                   <span class="link-block">
-                    <a href="https://github.com/HumanAIGC/AnimateAnyone" target="_blank"
+                    <a href="" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
@@ -111,7 +112,7 @@
 
                 <!-- ArXiv abstract Link -->
                 <span class="link-block">
-                  <a href="https://arxiv.org/pdf/2311.17117.pdf" target="_blank"
+                  <a href="" target="_blank"
                   class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                     <i class="ai ai-arxiv"></i>
@@ -147,30 +148,6 @@
 <!-- End paper abstract -->
 
 
-
-
-
-<!-- Youtube video -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <!-- Paper video. -->
-      <h2 class="title is-3">Video</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          
-          <div class="publication-video">
-            <!-- Youtube embed code here -->
-            <iframe src="https://www.youtube.com/embed/8PCn5hLKNu4?si=8yvBeRNAJuxp77FZ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End youtube video -->
-
-
 <!-- Image carousel -->
 <section class="hero is-small">
   <div class="hero-body">
@@ -180,7 +157,7 @@
         <!-- Your image here -->
         <img src="static/images/f2_img.png" alt="MY ALT TEXT"/>
         <h2 class="content has-text-justified">
-          The overview of our method. The pose sequence is initially encoded using Pose Guider and fused with multi-frame noise, followed by the Denoising UNet conducting the denoising process for video generation. The computational block of the Denoising UNet consists of Spatial-Attention, Cross-Attention, and Temporal-Attention, as illustrated in the dashed box on the right. The integration of reference image involves two aspects. Firstly, detailed features are extracted through ReferenceNet and utilized for Spatial-Attention. Secondly, semantic features are extracted through the CLIP image encoder for Cross-Attention. Temporal-Attention operates in the temporal dimension. Finally, the VAE decoder decodes the result into a video clip.
+          The Few-Shot Segmentation (FSS) aims to accomplish the novel class segmentation task with a few annotated images. Current FSS research based on meta-learning focuses on designing a complex interaction mechanism between the query and support feature. However, unlike humans who can rapidly learn new things from limited samples, the existing approach relies solely on fixed feature matching to tackle new tasks, lacking adaptability. In this paper, we propose a novel framework based on the adapter mechanism, namely Adaptive FSS, which can efficiently adapt the existing FSS model to the novel classes. In detail, we design the Prototype Adaptive Module (PAM), which utilizes accurate category information provided by the support set to derive class prototypes, enhancing class-specific information in the multi-stage representation. In addition, our approach is compatible with in diverse FSS methods with different backbones by simply inserting PAM between the layers of the encoder. Experiments demonstrate that our method effectively improves the performance of the FSS models (e.g., MSANet, HDMNet, FPTrans, and DCAMA) and achieves new state-of-the-art (SOTA) results (i.e.,72.4% and 79.1% mIoU on PASCAL-5$^i$ 1-shot and 5-shot settings, 52.7% and 60.0% mIoU on COCO-20$^i$ 1-shot and 5-shot settings).
        </h2>
      </div>
     </div>
