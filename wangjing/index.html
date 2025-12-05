@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jing Wang - Personal Homepage</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1f2937;
+        }
+        .external-link {
+            color: #2563eb;
+            transition: color 0.2s;
+            font-weight: 500;
+        }
+        .external-link:hover {
+            color: #3b82f6;
+            text-decoration: underline;
+        }
+        .section-header {
+            color: #1f2937;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .pub-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s;
+        }
+        .pub-item:hover {
+            background-color: #f3f4f6;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+<div class="max-w-4xl mx-auto py-8">
+
+<header class="mb-10 pb-4 border-b border-gray-300">
+    <div class="flex flex-col md:flex-row items-start md:items-center justify-between">
+        <div>
+            <h1 class="text-5xl font-extrabold text-gray-900 mb-2">Jing Wang</h1>
+            <p class="text-lg text-accent-gray mb-1">Ph.D. Student, Sun Yat-sen University</p>
+            <p class="text-l text-accent-gray mb-1">Advisor: <a href="https://scholar.google.com/citations?user=voxznZAAAAAJ&hl=en" target="_blank" class="external-link">Prof. Xiaodan Liang</a></p>
+            <p>I received my Master's and Bachelor's degrees from the University of Science and Technology Beijing.</p>
+            <p>Currently, I intern at <a href="https://klingai.com/cn/" target="_blank" class="external-link">Kuaishou (Kling AI)</a>, focusing on video generation, diffusion transformers, and multimodal models.</p>
+
+            <p class="mt-2">
+                <a href="wangj977@mail2.sysu.edu.cn" class="external-link">Email</a> /
+                <a href="https://scholar.google.com/citations?user=Q9Np_KQAAAAJ&hl=en" target="_blank" class="external-link">Google Scholar</a> /
+                <a href="https://github.com/jingw193" target="_blank" class="external-link">GitHub</a>
+            </p>
+        </div>
+        <div class="mt-6 md:mt-0 w-48 h-48 rounded-full overflow-hidden border-2 border-gray-200">
+            <img src="asset/human2.png" alt="Jing Wang" class="w-full h-full object-cover">
+        </div>
+    </div>
+</header>
+
+<section class="pt-6">
+    <h2 class="text-3xl font-bold section-header">Research Interests</h2>
+    <p>Currently, my research focuses on the following aspects:</p>
+    <ul class="list-disc list-inside text-gray-700 space-y-1 ml-6 mt-4">
+        <li>Video and Image Generation</li>
+        <li>Diffusion Models & Diffusion Transformers</li>
+        <li>Multimodal Learning</li>
+        <li>Reinforcement learning for Video Generation</li>
+
+    </ul>
+</section>
+
+
+<section class="pt-6">
+    <div>
+    <h2 class="text-3xl font-bold section-header">News</h2>
+    <ul class="list-disc list-inside text-gray-700 space-y-2 ml-6 mt-4">
+    <li><span class="font-semibold text-primary-blue">[11/2025]</span> &nbsp; One paper (Co-first author) about controlable image generation is accepted by <a href="https://360cvgroup.github.io/RelaCtrl/" class="external-link">AAAI 2026</a>.</li>
+    <li><span class="font-semibold text-primary-blue">[09/2025]</span> &nbsp; One paper (First author) about physical-aware text-to-video generation is accepted by <a href="https://neurips.cc/virtual/2025/loc/san-diego/poster/119925" class="external-link">NeurIPS 2025</a> (Spotlight).</li>
+    <li><span class="font-semibold text-primary-blue">[07/2025]</span> &nbsp; One paper about story synthesis is accepted by <a href="https://openaccess.thecvf.com/content/ICCV2025/papers/Ma_Lay2Story_Extending_Diffusion_Transformers_for_Layout-Togglable_Story_Generation_ICCV_2025_paper.pdf" class="external-link">ICCV 2025</a>.</li>
+    <li><span class="font-semibold text-primary-blue">[02/2025]</span> &nbsp; One paper (First author) about efficent video generation is accepted by <a href="https://openreview.net/pdf?id=lTrrnNdkOX" class="external-link">ICLR 2025</a>.</li>
+    <li><span class="font-semibold text-primary-blue">[12/2023]</span> &nbsp; One paper (First author) about few-shot segmentation is accepted by <a href="https://arxiv.org/pdf/2312.15731.pdf" class="external-link">AAAI 2024</a>.</li>
+    </ul>
+    </div>
+</section>
+
+<main class="space-y-12">
+
+<section class="pt-6">
+    <h2 class="text-3xl font-bold section-header">Selected Publications</h2>
+    <div class="space-y-4 text-base mt-4">
+
+        <div class="pub-item">
+            <div class="w-40 h-20 flex-shrink-0 rounded-md overflow-hidden border border-gray-200" style="background-image: url('asset/guard.png'); background-size: cover; background-position: center;"></div>
+            <div class="flex-grow">
+            <p class="font-medium text-lg text-gray-900 leading-snug">
+            <a href="https://arxiv.org/abs/2510.22319" class="external-link font-bold">GRPO-Guard: Mitigating Implicit Over-Optimization in Flow Matching via Regulated Clipping</a>
+            </p>
+            <p class="text-gray-600 mt-1 text-sm"><span class="font-bold">Jing Wang</span>, Jiajun Liang, Jie Liu, Henglin Liu, Gongye Liu, Jun Zheng, Wanyuan Pang, Ao Ma, Zhenyu Xie, Xintao Wang, Meng Wang, Pengfei Wan, Xiaodan Liang</p>
+            <p class="text-gray-500 italic text-sm">Preprint</p>
+            <div class="mt-2 space-x-3 text-xs">
+            <a href="https://arxiv.org/abs/2510.22319" class="external-link btn-red">arXiv</a> /
+            <a href="https://github.com/yifan123/flow_grpo#%EF%B8%8F-over-optimization-grpo-guard-" class="external-link btn">Code</a> /
+            <a href="https://jingw193.github.io/GRPO-Guard/" class="external-link btn">Project Page</a> /
+            <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:W5doXAXPEo4J:scholar.google.com/&output=citation&scisdr=CrxZGwJNEIqLhfKxEi8:ALhkC2QAAAAAaTK3Ci8t-zh4BQ1mJhrwAsAnmjo&scisig=ALhkC2QAAAAAaTK3Ci6kRUet4eJbFIhSCGZ8TRU&scisf=4&ct=citation&cd=-1&hl=en" class="external-link btn btn-dark">BibTeX</a>
+            </div>
+            </div>
+        </div>
+
+        <div class="pub-item">
+            <div class="w-40 h-20 flex-shrink-0 rounded-md overflow-hidden border border-gray-200" style="background-image: url('asset/relactrl.png'); background-size: cover; background-position: center;"></div>
+            <div class="flex-grow">
+            <p class="font-medium text-lg text-gray-900 leading-snug">
+            <a href="https://arxiv.org/abs/2502.14377" class="external-link font-bold">Relactrl: Relevance-guided efficient control for diffusion transformers</a>
+            </p>
+            <p class="text-gray-600 mt-1 text-sm">Ke Cao*, <span class="font-bold">Jing Wang*</span>, Ao Ma, Jiasong Feng, Zhanjie Zhang, Xuanhua He, Shanyuan Liu, Bo Cheng, Dawei Leng, Yuhui Yin, Jie Zhang</p>
+            <p class="text-gray-500 italic text-sm">AAAI 2026</p>
+            <div class="mt-2 space-x-3 text-xs">
+            <a href="https://arxiv.org/abs/2502.14377" class="external-link btn-red">arXiv</a> /
+            <a href="https://github.com/360CVGroup/RelaCtrl" class="external-link btn">Code</a> /
+            <a href="https://360cvgroup.github.io/RelaCtrl/" class="external-link btn">Project Page</a> /
+            <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:j6zQyCRXKlQJ:scholar.google.com/&output=citation&scisdr=CrzG0Eb6EIqLhfK-RqI:ALhkC2QAAAAAaTK4XqKxG-IOKDE-nTduiUm24I8&scisig=ALhkC2QAAAAAaTK4XjQGeWky4fIAwHdNsPBGupM&scisf=4&ct=citation&cd=-1&hl=en" class="external-link btn btn-dark">BibTeX</a>
+            </div>
+            </div>
+        </div>
+
+        <div class="pub-item">
+            <div class="w-40 h-40 flex-shrink-0 rounded-md overflow-hidden border border-gray-200" style="background-image: url('asset/wisa.png'); background-size: cover; background-position: center;"></div>
+            <div class="flex-grow">
+            <p class="font-medium text-lg text-gray-900 leading-snug">
+            <a href="https://neurips.cc/virtual/2025/loc/san-diego/poster/119925" class="external-link font-bold">WISA: World Simulator Assistant for Physics-Aware Text-to-Video Generation</a>
+            </p>
+            <p class="text-gray-600 mt-1 text-sm"><span class="font-bold">Jing Wang</span>, Ao Ma, Ke Cao, Jun Zheng, Zhanjie Zhang, Jiasong Feng, Shanyuan Liu, Yuhang Ma, Bo Cheng, Dawei Leng, Yuhui Yin, Xiaodan Liang</p>
+            <p class="text-gray-500 italic text-sm">NeurIPS 2025 Spotlight</p>
+            <div class="mt-2 space-x-3 text-xs">
+            <a href="https://neurips.cc/virtual/2025/loc/san-diego/poster/119925" class="external-link btn-red">arXiv</a> /
+            <a href="https://github.com/360CVGroup/WISA" class="external-link btn">Code</a> /
+            <a href="https://360cvgroup.github.io/WISA/" class="external-link btn">Project Page</a> /
+            <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:L1Md_ua0Hn0J:scholar.google.com/&output=citation&scisdr=CrxZGwJNEIqLhfK-7k0:ALhkC2QAAAAAaTK49k3_UeJjOvS3aJpKWZf0-_k&scisig=ALhkC2QAAAAAaTK49qMgtdnRQmaJEAfaRgygcIo&scisf=4&ct=citation&cd=-1&hl=en" class="external-link btn btn-dark">BibTeX</a>
+            </div>
+            </div>
+        </div>
+
+        <div class="pub-item">
+            <div class="w-40 h-20 flex-shrink-0 rounded-md overflow-hidden border border-gray-200" style="background-image: url('asset/ptdit.png'); background-size: cover; background-position: center;"></div>
+            <div class="flex-grow">
+            <p class="font-medium text-lg text-gray-900 leading-snug">
+            <a href="https://openreview.net/pdf?id=lTrrnNdkOX" class="external-link font-bold">PT-T2I/V: An Efficient Proxy-Tokenized Diffusion Transformer for Text-to-Image/Video-Task</a>
+            </p>
+            <p class="text-gray-600 mt-1 text-sm"><span class="font-bold">Jing Wang</span>, Ao Ma, Jiasong Feng, Dawei Leng, Yuhui Yin, Xiaodan Liang</p>
+            <p class="text-gray-500 italic text-sm">ICLR 2025</p>
+            <div class="mt-2 space-x-3 text-xs">
+            <a href="https://openreview.net/pdf?id=lTrrnNdkOX" class="external-link btn-red">arXiv</a> /
+            <a href="https://github.com/360CVGroup/Qihoo-T2X" class="external-link btn">Code</a> /
+            <a href="https://360cvgroup.github.io/Qihoo-T2X/" class="external-link btn">Project Page</a> /
+            <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:N0Dz07DZDSQJ:scholar.google.com/&output=citation&scisdr=CrzG0Eb6EIqLhfK9PRg:ALhkC2QAAAAAaTK7JRjdpVM5F1q9RKDupvUECjo&scisig=ALhkC2QAAAAAaTK7JbuoRP41Z63-aW49ZA9EIqM&scisf=4&ct=citation&cd=-1&hl=en" class="external-link btn btn-dark">BibTeX</a>
+            </div>
+            </div>
+        </div>
+
+        <div class="pub-item">
+            <div class="w-40 h-20 flex-shrink-0 rounded-md overflow-hidden border border-gray-200" style="background-image: url('asset/adapt.png'); background-size: cover; background-position: center;"></div>
+            <div class="flex-grow">
+            <p class="font-medium text-lg text-gray-900 leading-snug">
+            <a href="https://arxiv.org/pdf/2312.15731.pdf" class="external-link font-bold">Adaptive FSS: A Novel Few-Shot Segmentation Framework via Prototype Enhancement</a>
+            </p>
+            <p class="text-gray-600 mt-1 text-sm"><span class="font-bold">Jing Wang</span>, Jiangyun Li, Chen Chen, Yisi Zhang, Haoran Shen, Tianxiang Zhang</p>
+            <p class="text-gray-500 italic text-sm">AAAI 2024</p>
+            <div class="mt-2 space-x-3 text-xs">
+            <a href="https://arxiv.org/pdf/2312.15731.pdf" class="external-link btn-red">arXiv</a> /
+            <a href="https://github.com/jingw193/AdaptiveFSS" class="external-link btn">Code</a> /
+            <a href="https://jingw193.github.io/AdaptiveFSS/" class="external-link btn">Project Page</a> /
+            <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:5NfU2yFMEZAJ:scholar.google.com/&output=citation&scisdr=CrzG0Eb6EIqLhfK6h_8:ALhkC2QAAAAAaTK8n_-CX-tqfAXGKG4Dh2JHi40&scisig=ALhkC2QAAAAAaTK8n8hLQTjsT5c6FNi0vMFxfuA&scisf=4&ct=citation&cd=-1&hl=en" class="external-link btn btn-dark">BibTeX</a>
+            </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="pt-6">
+    <h2 class="text-3xl font-bold section-header">Service</h2>
+    <ul class="list-disc list-inside text-gray-700 ml-6 space-y-1">
+        <li>Reviewer: NeurIPS 2024-2025, ICML 2025, ICLR 2025-2026, AAAI 2026, CVPR 2026</li>
+    </ul>
+</section>
+
+<!-- ======================= -->
+<!-- 🌍 Visitor Map (Read-only) -->
+<!-- ======================= -->
+<section class="pt-10">
+    <h2 class="text-3xl font-bold section-header mb-4">Global Visitors</h2>
+
+    <!-- Map container -->
+    <div id="visitorMap" class="w-full rounded-xl border border-gray-300" style="height: 420px;"></div>
+
+    <!-- Leaflet CSS -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoSgLibJEiwQ2o="
+        crossorigin=""
+    />
+
+    <!-- Leaflet JS -->
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-o9N1j7kP6oELyM5XHstKQnJcC3PaFz2eHpFj5fW70z8="
+        crossorigin=""
+    ></script>
+
+    <script>
+        // Your Gist RAW URL (Read-only JSON)
+        const VISITOR_GIST_URL =
+            "https://gist.githubusercontent.com/jingw193/dab004def02b55d3e022d01c097bc73c/raw/66bae5da61aab17b329ce45134f025816b0f1c10/visitors.json";
+
+        // Initialize map
+        const map = L.map("visitorMap").setView([20, 0], 2);
+
+        // Light / Dark mode automatic base map
+        function loadBaseLayer() {
+            const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+            const url = prefersDark
+                ? "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+                : "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
+
+            L.tileLayer(url, {
+                maxZoom: 18,
+            }).addTo(map);
+        }
+
+        loadBaseLayer();
+
+        // Reload tile layer when color scheme changes
+        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
+            map.eachLayer((layer) => map.removeLayer(layer));
+            loadBaseLayer();
+            loadVisitors();
+        });
+
+        // Load visitor data from Gist
+        async function loadVisitors() {
+            try {
+                const resp = await fetch(VISITOR_GIST_URL);
+                const data = await resp.json();
+
+                data.forEach((entry) => {
+                    if (!entry.lat || !entry.lon) return;
+
+                    L.circleMarker([entry.lat, entry.lon], {
+                        radius: 5,
+                        color: "#4f46e5",
+                        fillColor: "#6366f1",
+                        fillOpacity: 0.8,
+                    })
+                        .addTo(map)
+                        .bindPopup(
+                            `🌎 <b>${entry.country || "Unknown Country"}</b><br/>
+                             📍 Lat: ${entry.lat}, Lon: ${entry.lon}<br/>
+                             🕒 ${entry.time || "Unknown"}`
+                        );
+                });
+            } catch (err) {
+                console.error("Failed to load visitor data:", err);
+            }
+        }
+
+        // Load on start
+        loadVisitors();
+    </script>
+</section>
+
+
+</main>
+
+<footer class="mt-12 text-center text-sm text-gray-500 border-t pt-6">
+    <p>© 2025 Jing Wang. Last updated December 2025. Built with Tailwind CSS.</p>
+</footer>
+
+</div>
+</body>
+</html>
