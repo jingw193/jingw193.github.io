@@ -189,92 +189,83 @@
     </ul>
 </section>
 
-<!-- ======================= -->
-<!-- 🌍 Visitor Map (Read-only) -->
-<!-- ======================= -->
-<section class="pt-10">
+
+
+<!-- <section class="pt-10">
     <h2 class="text-3xl font-bold section-header mb-4">Global Visitors</h2>
 
-    <!-- Map container -->
-    <div id="visitorMap" class="w-full rounded-xl border border-gray-300" style="height: 420px;"></div>
+    <div id="visitorMap"
+        style="min-height:420px;height:420px;width:100%;border:1px solid #ccc;border-radius:12px;">
+    </div>
 
-    <!-- Leaflet CSS -->
-    <link
-        rel="stylesheet"
-        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoSgLibJEiwQ2o="
-        crossorigin=""
-    />
+    <link rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 
-    <!-- Leaflet JS -->
-    <script
-        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-        integrity="sha256-o9N1j7kP6oELyM5XHstKQnJcC3PaFz2eHpFj5fW70z8="
-        crossorigin=""
-    ></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
     <script>
-        // Your Gist RAW URL (Read-only JSON)
-        const VISITOR_GIST_URL =
-            "https://gist.githubusercontent.com/jingw193/dab004def02b55d3e022d01c097bc73c/raw/66bae5da61aab17b329ce45134f025816b0f1c10/visitors.json";
+        window.addEventListener("load", () => {
+            console.log("Visitor map initializing...");
 
-        // Initialize map
-        const map = L.map("visitorMap").setView([20, 0], 2);
+            const map = L.map("visitorMap").setView([20, 0], 2);
 
-        // Light / Dark mode automatic base map
-        function loadBaseLayer() {
-            const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            const tileLayer = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                { maxZoom: 18 }
+            );
 
-            const url = prefersDark
-                ? "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-                : "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
+            tileLayer.addTo(map);
 
-            L.tileLayer(url, {
-                maxZoom: 18,
-            }).addTo(map);
-        }
+            const GIST_URL =
+                "https://gist.githubusercontent.com/jingw193/dab004def02b55d3e022d01c097bc73c/raw/66bae5da61aab17b329ce45134f025816b0f1c10/visitors.json";
 
-        loadBaseLayer();
-
-        // Reload tile layer when color scheme changes
-        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
-            map.eachLayer((layer) => map.removeLayer(layer));
-            loadBaseLayer();
-            loadVisitors();
-        });
-
-        // Load visitor data from Gist
-        async function loadVisitors() {
-            try {
-                const resp = await fetch(VISITOR_GIST_URL);
-                const data = await resp.json();
-
-                data.forEach((entry) => {
-                    if (!entry.lat || !entry.lon) return;
-
-                    L.circleMarker([entry.lat, entry.lon], {
-                        radius: 5,
-                        color: "#4f46e5",
-                        fillColor: "#6366f1",
-                        fillOpacity: 0.8,
-                    })
+            // Safe loading: even JSON报错也不会影响地图
+            fetch(GIST_URL)
+                .then(res => res.json())
+                .then(data => {
+                    console.log("Loaded visitor data:", data);
+                    data.forEach(v => {
+                        if (!v.lat || !v.lon) return;
+                        L.circleMarker([v.lat, v.lon], {
+                            radius: 5,
+                            color: "#4f46e5",
+                            fillColor: "#6366f1",
+                            fillOpacity: 0.8,
+                        })
                         .addTo(map)
                         .bindPopup(
-                            `🌎 <b>${entry.country || "Unknown Country"}</b><br/>
-                             📍 Lat: ${entry.lat}, Lon: ${entry.lon}<br/>
-                             🕒 ${entry.time || "Unknown"}`
+                            `<b>${v.country || "Unknown"}</b><br>
+                             Lat: ${v.lat}, Lon: ${v.lon}<br>
+                             ${v.time || ""}`
                         );
-                });
-            } catch (err) {
-                console.error("Failed to load visitor data:", err);
-            }
-        }
-
-        // Load on start
-        loadVisitors();
+                    });
+                })
+                .catch(err => console.error("Visitor JSON load error:", err));
+        });
     </script>
-</section>
+</section> -->
 
+<div id="map" style="height: 500px; width: 100%;"></div>
+
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+// 1. 初始化地图
+var map = L.map('map').setView([20, 0], 2);
+
+// 2. 使用 OpenStreetMap（不需要 token，默认稳定可用）
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 5,
+    attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map);
+
+// 3. 测试 marker
+L.marker([37.7749, -122.4194]).addTo(map).bindPopup("San Francisco");
+</script>
 
 </main>
 
