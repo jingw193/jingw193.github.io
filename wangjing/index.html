@@ -1,201 +1,227 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jing Wang - Personal Homepage</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #ffffff;
-            color: #1f2937;
-        }
-        .external-link {
-            color: #2563eb;
-            transition: color 0.2s;
-            font-weight: 500;
-        }
-        .external-link:hover {
-            color: #3b82f6;
-            text-decoration: underline;
-        }
-        .section-header {
-            color: #1f2937;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
-        }
-        .pub-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 0.75rem;
-            border-radius: 0.5rem;
-            transition: background-color 0.2s;
-        }
-        .pub-item:hover {
-            background-color: #f3f4f6;
-        }
-    </style>
+<!DOCTYPE HTML>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Jing Wang</title>
+  
+  <meta name="author" content="Jing Wang">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+  <link rel="icon" type="image/png" href="asset/human2.png">
 </head>
-<body class="p-4 md:p-10">
-<div class="max-w-4xl mx-auto py-8">
 
-<header class="mb-10 pb-4 border-b border-gray-300">
-    <div class="flex flex-col md:flex-row items-start md:items-center justify-between">
-        <div>
-            <h1 class="text-5xl font-extrabold text-gray-900 mb-2">Jing Wang</h1>
-            <p class="text-lg text-accent-gray mb-1">Ph.D. Student, Sun Yat-sen University</p>
-            <p class="text-l text-accent-gray mb-1">Advisor: <a href="https://scholar.google.com/citations?user=voxznZAAAAAJ&hl=en" target="_blank" class="external-link">Prof. Xiaodan Liang</a></p>
-            <p>I received my Master's and Bachelor's degrees from the University of Science and Technology Beijing.</p>
-            <p>Currently, I intern at <a href="https://klingai.com/cn/" target="_blank" class="external-link">Kuaishou (Kling AI)</a>, focusing on video generation, diffusion transformers, and multimodal models.</p>
+<body>
+  <table style="width:100%;max-width:850px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+    <tr style="padding:0px">
+      <td style="padding:0px">
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+          <tr style="padding:0px">
+            <td style="padding:2.5%;width:60%;vertical-align:middle">
+              <p style="text-align:center">
+                <name>Jing Wang (王晶)</name>
+              </p>
+              <p>
+              I am currently a second-year PhD student at the <a href="https://www.sysu.edu.cn/" target="_blank">Sun Yat-sen University</a>, advised by Prof. <a href="https://ise.sysu.edu.cn/teacher/LiangXiaodan" target="_blank">Xiaodan Liang</a>. Currently, I intern at <a href="https://klingai.com/cn/" target="_blank">Kuaishou (Kling AI)</a>, focusing on <strong>Diffusion Models</strong>, <strong>Multimodal Models</strong>, <strong>Generative Models</strong>, and <strong>Reinforcement learning for Visual Generation</strong>.
+              </p>
+              <p style="text-align:center">
+                <a href="wangj977@mail2.sysu.edu.cn">Email</a> &nbsp/&nbsp
+                <a href="https://scholar.google.com/citations?user=Q9Np_KQAAAAJ&hl=en"> Google Scholar</a> &nbsp/&nbsp
+                <a href="https://github.com/jingw193"> Github </a> &nbsp/&nbsp
+              </p>
+            </td>
+            <td style="padding:2.5%;width:30%;max-width:30%">
+              <img style="width:80%;max-width:80%" alt="profile photo" src="asset/human2.png">
+            </td>
+          </tr>
+        </tbody></table>
 
-            <p class="mt-2">
-                <a href="wangj977@mail2.sysu.edu.cn" class="external-link">Email</a> /
-                <a href="https://scholar.google.com/citations?user=Q9Np_KQAAAAJ&hl=en" target="_blank" class="external-link">Google Scholar</a> /
-                <a href="https://github.com/jingw193" target="_blank" class="external-link">GitHub</a>
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+          <tr>
+          <td style="padding:20px;width:100%;vertical-align:middle">
+            <heading>Education</heading>
+            <p>
+              <li style="margin: 5px;" >
+                <b>University of Science and Technology Beijing,</b> Sept. 2017 - Jun. 2021, <strong>B.S.</strong> in School of Automation.
+              <li style="margin: 5px;" >
+                <b>University of Science and Technology Beijing,</b> Sept. 2021 - Jun. 2024, <strong>M.S.</strong> in School of Automation.
+              <li style="margin: 5px;" >
+                <b>Sun Yat-sen University,</b> Sept. 2024 - Jun. 2028, <strong>Ph.D.</strong> in School of Intelligent Systems Engineering.
+              </li>
             </p>
-        </div>
-        <div class="mt-6 md:mt-0 w-48 h-48 rounded-full overflow-hidden border-2 border-gray-200">
-            <img src="asset/human2.png" alt="Jing Wang" class="w-full h-full object-cover">
-        </div>
-    </div>
-</header>
-
-<section class="pt-6">
-    <h2 class="text-3xl font-bold section-header">Research Interests</h2>
-    <p>Currently, my research focuses on the following aspects:</p>
-    <ul class="list-disc list-inside text-gray-700 space-y-1 ml-6 mt-4">
-        <li>Video and Image Generation</li>
-        <li>Diffusion Models & Diffusion Transformers</li>
-        <li>Multimodal Learning</li>
-        <li>Reinforcement learning for Video Generation</li>
-
-    </ul>
-</section>
+          </td>
+        </tr>
+      </tbody></table>
 
 
-<section class="pt-6">
-    <div>
-    <h2 class="text-3xl font-bold section-header">News</h2>
-    <ul class="list-disc list-inside text-gray-700 space-y-2 ml-6 mt-4">
-    <li><span class="font-semibold text-primary-blue">[11/2025]</span> &nbsp; One paper (Co-first author) about controlable image generation is accepted by <a href="https://360cvgroup.github.io/RelaCtrl/" class="external-link">AAAI 2026</a>.</li>
-    <li><span class="font-semibold text-primary-blue">[09/2025]</span> &nbsp; One paper (First author) about physical-aware text-to-video generation is accepted by <a href="https://neurips.cc/virtual/2025/loc/san-diego/poster/119925" class="external-link">NeurIPS 2025</a> (Spotlight).</li>
-    <li><span class="font-semibold text-primary-blue">[07/2025]</span> &nbsp; One paper about story synthesis is accepted by <a href="https://openaccess.thecvf.com/content/ICCV2025/papers/Ma_Lay2Story_Extending_Diffusion_Transformers_for_Layout-Togglable_Story_Generation_ICCV_2025_paper.pdf" class="external-link">ICCV 2025</a>.</li>
-    <li><span class="font-semibold text-primary-blue">[02/2025]</span> &nbsp; One paper (First author) about efficent video generation is accepted by <a href="https://openreview.net/pdf?id=lTrrnNdkOX" class="external-link">ICLR 2025</a>.</li>
-    <li><span class="font-semibold text-primary-blue">[12/2023]</span> &nbsp; One paper (First author) about few-shot segmentation is accepted by <a href="https://arxiv.org/pdf/2312.15731.pdf" class="external-link">AAAI 2024</a>.</li>
-    </ul>
-    </div>
-</section>
+      <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+        <tr>
+        <td style="padding:20px;width:100%;vertical-align:middle">
+          <heading>News</heading>
+          <p>
+            <li style="margin: 5px;" >
+                One paper (Co-first author) about controlable image generation is accepted by <a href="https://360cvgroup.github.io/RelaCtrl/" class="external-link">AAAI 2026</a>.
+            <li style="margin: 5px;" >
+                One paper (First author) about physical-aware text-to-video generation is accepted by <a href="https://neurips.cc/virtual/2025/loc/san-diego/poster/119925" class="external-link">NeurIPS 2025</a> (Spotlight).
+            <li style="margin: 5px;" >
+                One paper about story synthesis is accepted by <a href="https://openaccess.thecvf.com/content/ICCV2025/papers/Ma_Lay2Story_Extending_Diffusion_Transformers_for_Layout-Togglable_Story_Generation_ICCV_2025_paper.pdf" class="external-link">ICCV 2025</a>.
+            <li style="margin: 5px;" >
+                One paper (First author) about efficent video generation is accepted by <a href="https://openreview.net/pdf?id=lTrrnNdkOX" class="external-link">ICLR 2025</a>.
+            <li style="margin: 5px;" >
+                One paper (First author) about few-shot segmentation is accepted by <a href="https://arxiv.org/pdf/2312.15731.pdf" class="external-link">AAAI 2024</a>.
+            </li>
+          </p>
+        </td>
+      </tr>
+    </tbody></table>
 
-<main class="space-y-12">
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+            <tr>
+            <td style="padding:20px;width:100%;vertical-align:middle">
+              <heading>Publications</heading>
+              <p>
+                * indicates equal contribution
+              </p>
+            </td>
+          </tr>
+        </tbody></table>
 
-<section class="pt-6">
-    <h2 class="text-3xl font-bold section-header">Selected Publications</h2>
-    <div class="space-y-4 text-base mt-4">
+        <table>
+            <tr>
+              <td style="padding:20px;width:30%;max-width:30%" align="center">
+                <img style="width:100%;max-width:100%" src="asset/guard.png" alt="GRPO-Guard">
+              </td>
+              <td width="70%" valign="top">
+                <papertitle>
+                  <a href="https://arxiv.org/abs/2510.22319">GRPO-Guard: Mitigating Implicit Over-Optimization in Flow Matching via Regulated Clipping</a>
+                </papertitle>
+                <br>
+                <strong>Jing Wang</strong>, Jiajun Liang, Jie Liu, Henglin Liu, Gongye Liu, Jun Zheng, Wanyuan Pang, Ao Ma, Zhenyu Xie, Xintao Wang, Meng Wang, Pengfei Wan, Xiaodan Liang
+                <br>
+                <em>Preprint</em>
+                <br>
+                <a href="https://arxiv.org/abs/2510.22319">arXiv</a> /
+                <a href="https://github.com/yifan123/flow_grpo#%EF%B8%8F-over-optimization-grpo-guard-">Code</a> /
+                <a href="https://jingw193.github.io/GRPO-Guard/">Project Page</a> /
+                <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:W5doXAXPEo4J:scholar.google.com/&output=citation&scisdr=CrxZGwJNEIqLhfKxEi8:ALhkC2QAAAAAaTK3Ci8t-zh4BQ1mJhrwAsAnmjo&scisig=ALhkC2QAAAAAaTK3Ci6kRUet4eJbFIhSCGZ8TRU&scisf=4&ct=citation&cd=-1&hl=en">BibTeX</a>
+              </td>
+            </tr>
+          
+            <tr>
+              <td style="padding:20px;width:30%;max-width:30%" align="center">
+                <img style="width:100%;max-width:100%" src="asset/relactrl.png" alt="Relactrl">
+              </td>
+              <td width="70%" valign="top">
+                <papertitle>
+                  <a href="https://arxiv.org/abs/2502.14377">Relactrl: Relevance-guided efficient control for diffusion transformers</a>
+                </papertitle>
+                <br>
+                Ke Cao*, <strong>Jing Wang*</strong>, Ao Ma, Jiasong Feng, Zhanjie Zhang, Xuanhua He, Shanyuan Liu, Bo Cheng, Dawei Leng, Yuhui Yin, Jie Zhang
+                <br>
+                <em>AAAI 2026</em>
+                <br>
+                <a href="https://arxiv.org/abs/2502.14377">arXiv</a> /
+                <a href="https://github.com/360CVGroup/RelaCtrl">Code</a> /
+                <a href="https://360cvgroup.github.io/RelaCtrl/">Project Page</a> /
+                <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:j6zQyCRXKlQJ:scholar.google.com/&output=citation&scisdr=CrzG0Eb6EIqLhfK-RqI:ALhkC2QAAAAAaTK4XqKxG-IOKDE-nTduiUm24I8&scisig=ALhkC2QAAAAAaTK4XjQGeWky4fIAwHdNsPBGupM&scisf=4&ct=citation&cd=-1&hl=en">BibTeX</a>
+              </td>
+            </tr>
+          
+            <tr>
+              <td style="padding:20px;width:30%;max-width:30%" align="center">
+                <img style="width:100%;max-width:100%" src="asset/wisa.png" alt="WISA">
+              </td>
+              <td width="70%" valign="top">
+                <papertitle>
+                  <a href="https://neurips.cc/virtual/2025/loc/san-diego/poster/119925">WISA: World Simulator Assistant for Physics-Aware Text-to-Video Generation</a>
+                </papertitle>
+                <br>
+                <strong>Jing Wang</strong>, Ao Ma, Ke Cao, Jun Zheng, Zhanjie Zhang, Jiasong Feng, Shanyuan Liu, Yuhang Ma, Bo Cheng, Dawei Leng, Yuhui Yin, Xiaodan Liang
+                <br>
+                <em>NeurIPS 2025 Spotlight</em>
+                <br>
+                <a href="https://neurips.cc/virtual/2025/loc/san-diego/poster/119925">arXiv</a> /
+                <a href="https://github.com/360CVGroup/WISA">Code</a> /
+                <a href="https://360cvgroup.github.io/WISA/">Project Page</a> /
+                <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:L1Md_ua0Hn0J:scholar.google.com/&output=citation&scisdr=CrxZGwJNEIqLhfK-7k0:ALhkC2QAAAAAaTK49k3_UeJjOvS3aJpKWZf0-_k&scisig=ALhkC2QAAAAAaTK49qMgtdnRQmaJEAfaRgygcIo&scisf=4&ct=citation&cd=-1&hl=en">BibTeX</a>
+              </td>
+            </tr>
+          
+            <tr>
+              <td style="padding:20px;width:30%;max-width:30%" align="center">
+                <img style="width:100%;max-width:100%" src="asset/ptdit.png" alt="PT-T2I/V">
+              </td>
+              <td width="70%" valign="top">
+                <papertitle>
+                  <a href="https://openreview.net/pdf?id=lTrrnNdkOX">PT-T2I/V: An Efficient Proxy-Tokenized Diffusion Transformer for Text-to-Image/Video-Task</a>
+                </papertitle>
+                <br>
+                <strong>Jing Wang</strong>, Ao Ma, Jiasong Feng, Dawei Leng, Yuhui Yin, Xiaodan Liang
+                <br>
+                <em>ICLR 2025</em>
+                <br>
+                <a href="https://openreview.net/pdf?id=lTrrnNdkOX">arXiv</a> /
+                <a href="https://github.com/360CVGroup/Qihoo-T2X">Code</a> /
+                <a href="https://360cvgroup.github.io/Qihoo-T2X/">Project Page</a> /
+                <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:N0Dz07DZDSQJ:scholar.google.com/&output=citation&scisdr=CrzG0Eb6EIqLhfK9PRg:ALhkC2QAAAAAaTK7JRjdpVM5F1q9RKDupvUECjo&scisig=ALhkC2QAAAAAaTK7JbuoRP41Z63-aW49ZA9EIqM&scisf=4&ct=citation&cd=-1&hl=en">BibTeX</a>
+              </td>
+            </tr>
+          
+            <tr>
+              <td style="padding:20px;width:30%;max-width:30%" align="center">
+                <img style="width:100%;max-width:100%" src="asset/adapt.png" alt="Adaptive FSS">
+              </td>
+              <td width="70%" valign="top">
+                <papertitle>
+                  <a href="https://arxiv.org/pdf/2312.15731.pdf">Adaptive FSS: A Novel Few-Shot Segmentation Framework via Prototype Enhancement</a>
+                </papertitle>
+                <br>
+                <strong>Jing Wang</strong>, Jiangyun Li, Chen Chen, Yisi Zhang, Haoran Shen, Tianxiang Zhang
+                <br>
+                <em>AAAI 2024</em>
+                <br>
+                <a href="https://arxiv.org/pdf/2312.15731.pdf">arXiv</a> /
+                <a href="https://github.com/jingw193/AdaptiveFSS">Code</a> /
+                <a href="https://jingw193.github.io/AdaptiveFSS/">Project Page</a> /
+                <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:5NfU2yFMEZAJ:scholar.google.com/&output=citation&scisdr=CrzG0Eb6EIqLhfK6h_8:ALhkC2QAAAAAaTK8n_-CX-tqfAXGKG4Dh2JHi40&scisig=ALhkC2QAAAAAaTK8n8hLQTjsT5c6FNi0vMFxfuA&scisf=4&ct=citation&cd=-1&hl=en">BibTeX</a>
+              </td>
+            </tr>
+          </table>
+        
 
-        <div class="pub-item">
-            <div class="w-40 h-20 flex-shrink-0 rounded-md overflow-hidden border border-gray-200" style="background-image: url('asset/guard.png'); background-size: cover; background-position: center;"></div>
-            <div class="flex-grow">
-            <p class="font-medium text-lg text-gray-900 leading-snug">
-            <a href="https://arxiv.org/abs/2510.22319" class="external-link font-bold">GRPO-Guard: Mitigating Implicit Over-Optimization in Flow Matching via Regulated Clipping</a>
-            </p>
-            <p class="text-gray-600 mt-1 text-sm"><span class="font-bold">Jing Wang</span>, Jiajun Liang, Jie Liu, Henglin Liu, Gongye Liu, Jun Zheng, Wanyuan Pang, Ao Ma, Zhenyu Xie, Xintao Wang, Meng Wang, Pengfei Wan, Xiaodan Liang</p>
-            <p class="text-gray-500 italic text-sm">Preprint</p>
-            <div class="mt-2 space-x-3 text-xs">
-            <a href="https://arxiv.org/abs/2510.22319" class="external-link btn-red">arXiv</a> /
-            <a href="https://github.com/yifan123/flow_grpo#%EF%B8%8F-over-optimization-grpo-guard-" class="external-link btn">Code</a> /
-            <a href="https://jingw193.github.io/GRPO-Guard/" class="external-link btn">Project Page</a> /
-            <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:W5doXAXPEo4J:scholar.google.com/&output=citation&scisdr=CrxZGwJNEIqLhfKxEi8:ALhkC2QAAAAAaTK3Ci8t-zh4BQ1mJhrwAsAnmjo&scisig=ALhkC2QAAAAAaTK3Ci6kRUet4eJbFIhSCGZ8TRU&scisf=4&ct=citation&cd=-1&hl=en" class="external-link btn btn-dark">BibTeX</a>
-            </div>
-            </div>
-        </div>
 
-        <div class="pub-item">
-            <div class="w-40 h-20 flex-shrink-0 rounded-md overflow-hidden border border-gray-200" style="background-image: url('asset/relactrl.png'); background-size: cover; background-position: center;"></div>
-            <div class="flex-grow">
-            <p class="font-medium text-lg text-gray-900 leading-snug">
-            <a href="https://arxiv.org/abs/2502.14377" class="external-link font-bold">Relactrl: Relevance-guided efficient control for diffusion transformers</a>
-            </p>
-            <p class="text-gray-600 mt-1 text-sm">Ke Cao*, <span class="font-bold">Jing Wang*</span>, Ao Ma, Jiasong Feng, Zhanjie Zhang, Xuanhua He, Shanyuan Liu, Bo Cheng, Dawei Leng, Yuhui Yin, Jie Zhang</p>
-            <p class="text-gray-500 italic text-sm">AAAI 2026</p>
-            <div class="mt-2 space-x-3 text-xs">
-            <a href="https://arxiv.org/abs/2502.14377" class="external-link btn-red">arXiv</a> /
-            <a href="https://github.com/360CVGroup/RelaCtrl" class="external-link btn">Code</a> /
-            <a href="https://360cvgroup.github.io/RelaCtrl/" class="external-link btn">Project Page</a> /
-            <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:j6zQyCRXKlQJ:scholar.google.com/&output=citation&scisdr=CrzG0Eb6EIqLhfK-RqI:ALhkC2QAAAAAaTK4XqKxG-IOKDE-nTduiUm24I8&scisig=ALhkC2QAAAAAaTK4XjQGeWky4fIAwHdNsPBGupM&scisf=4&ct=citation&cd=-1&hl=en" class="external-link btn btn-dark">BibTeX</a>
-            </div>
-            </div>
-        </div>
-
-        <div class="pub-item">
-            <div class="w-40 h-40 flex-shrink-0 rounded-md overflow-hidden border border-gray-200" style="background-image: url('asset/wisa.png'); background-size: cover; background-position: center;"></div>
-            <div class="flex-grow">
-            <p class="font-medium text-lg text-gray-900 leading-snug">
-            <a href="https://neurips.cc/virtual/2025/loc/san-diego/poster/119925" class="external-link font-bold">WISA: World Simulator Assistant for Physics-Aware Text-to-Video Generation</a>
-            </p>
-            <p class="text-gray-600 mt-1 text-sm"><span class="font-bold">Jing Wang</span>, Ao Ma, Ke Cao, Jun Zheng, Zhanjie Zhang, Jiasong Feng, Shanyuan Liu, Yuhang Ma, Bo Cheng, Dawei Leng, Yuhui Yin, Xiaodan Liang</p>
-            <p class="text-gray-500 italic text-sm">NeurIPS 2025 Spotlight</p>
-            <div class="mt-2 space-x-3 text-xs">
-            <a href="https://neurips.cc/virtual/2025/loc/san-diego/poster/119925" class="external-link btn-red">arXiv</a> /
-            <a href="https://github.com/360CVGroup/WISA" class="external-link btn">Code</a> /
-            <a href="https://360cvgroup.github.io/WISA/" class="external-link btn">Project Page</a> /
-            <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:L1Md_ua0Hn0J:scholar.google.com/&output=citation&scisdr=CrxZGwJNEIqLhfK-7k0:ALhkC2QAAAAAaTK49k3_UeJjOvS3aJpKWZf0-_k&scisig=ALhkC2QAAAAAaTK49qMgtdnRQmaJEAfaRgygcIo&scisf=4&ct=citation&cd=-1&hl=en" class="external-link btn btn-dark">BibTeX</a>
-            </div>
-            </div>
-        </div>
-
-        <div class="pub-item">
-            <div class="w-40 h-20 flex-shrink-0 rounded-md overflow-hidden border border-gray-200" style="background-image: url('asset/ptdit.png'); background-size: cover; background-position: center;"></div>
-            <div class="flex-grow">
-            <p class="font-medium text-lg text-gray-900 leading-snug">
-            <a href="https://openreview.net/pdf?id=lTrrnNdkOX" class="external-link font-bold">PT-T2I/V: An Efficient Proxy-Tokenized Diffusion Transformer for Text-to-Image/Video-Task</a>
-            </p>
-            <p class="text-gray-600 mt-1 text-sm"><span class="font-bold">Jing Wang</span>, Ao Ma, Jiasong Feng, Dawei Leng, Yuhui Yin, Xiaodan Liang</p>
-            <p class="text-gray-500 italic text-sm">ICLR 2025</p>
-            <div class="mt-2 space-x-3 text-xs">
-            <a href="https://openreview.net/pdf?id=lTrrnNdkOX" class="external-link btn-red">arXiv</a> /
-            <a href="https://github.com/360CVGroup/Qihoo-T2X" class="external-link btn">Code</a> /
-            <a href="https://360cvgroup.github.io/Qihoo-T2X/" class="external-link btn">Project Page</a> /
-            <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:N0Dz07DZDSQJ:scholar.google.com/&output=citation&scisdr=CrzG0Eb6EIqLhfK9PRg:ALhkC2QAAAAAaTK7JRjdpVM5F1q9RKDupvUECjo&scisig=ALhkC2QAAAAAaTK7JbuoRP41Z63-aW49ZA9EIqM&scisf=4&ct=citation&cd=-1&hl=en" class="external-link btn btn-dark">BibTeX</a>
-            </div>
-            </div>
-        </div>
-
-        <div class="pub-item">
-            <div class="w-40 h-20 flex-shrink-0 rounded-md overflow-hidden border border-gray-200" style="background-image: url('asset/adapt.png'); background-size: cover; background-position: center;"></div>
-            <div class="flex-grow">
-            <p class="font-medium text-lg text-gray-900 leading-snug">
-            <a href="https://arxiv.org/pdf/2312.15731.pdf" class="external-link font-bold">Adaptive FSS: A Novel Few-Shot Segmentation Framework via Prototype Enhancement</a>
-            </p>
-            <p class="text-gray-600 mt-1 text-sm"><span class="font-bold">Jing Wang</span>, Jiangyun Li, Chen Chen, Yisi Zhang, Haoran Shen, Tianxiang Zhang</p>
-            <p class="text-gray-500 italic text-sm">AAAI 2024</p>
-            <div class="mt-2 space-x-3 text-xs">
-            <a href="https://arxiv.org/pdf/2312.15731.pdf" class="external-link btn-red">arXiv</a> /
-            <a href="https://github.com/jingw193/AdaptiveFSS" class="external-link btn">Code</a> /
-            <a href="https://jingw193.github.io/AdaptiveFSS/" class="external-link btn">Project Page</a> /
-            <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:5NfU2yFMEZAJ:scholar.google.com/&output=citation&scisdr=CrzG0Eb6EIqLhfK6h_8:ALhkC2QAAAAAaTK8n_-CX-tqfAXGKG4Dh2JHi40&scisig=ALhkC2QAAAAAaTK8n8hLQTjsT5c6FNi0vMFxfuA&scisf=4&ct=citation&cd=-1&hl=en" class="external-link btn btn-dark">BibTeX</a>
-            </div>
-            </div>
-        </div>
-
-    </div>
-</section>
-
-<section class="pt-6">
-    <h2 class="text-3xl font-bold section-header">Service</h2>
-    <ul class="list-disc list-inside text-gray-700 ml-6 space-y-1">
-        <li>Reviewer: NeurIPS 2024-2025, ICML 2025, ICLR 2025-2026, AAAI 2026, CVPR 2026</li>
-    </ul>
-</section>
+            
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+            <tr>
+            <td style="padding:20px;width:100%;vertical-align:middle">
+              <heading>Service</heading>
+              <p>
+                <li style="margin: 5px;">Reviewer: NeurIPS 2024-2025, ICML 2025, ICLR 2025-2026, AAAI 2026, CVPR 2026</li>
+              </p>
+            </td>
+          </tr>
+        </tbody></table>
 
 
-</main>
-
-<footer class="mt-12 text-center text-sm text-gray-500 border-t pt-6">
-    <p>© 2025 Jing Wang. Last updated December 2025. Built with Tailwind CSS.</p>
-</footer>
-
-</div>
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+          <tr>
+            <td style="padding:0px">
+              <br>
+              <p style="text-align:right;font-size:small;">
+                <a href="https://jonbarron.info/">Website Template</a>
+              </p>
+            </td>
+          </tr>
+        </tbody></table>
+      </td>
+    </tr>
+  </table>
+  
+<p><center>
+	  <div id="clustrmaps-widget" style="width:5%">
+    <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=uvxi_62ROu366WKha1DQAE_axpjiulDekC7S53Fh5OM"></script>
+	  </div>        
+	  <br>
+	    &copy; Jing Wang | Last updated: December 23, 2025
+</center></p>
 </body>
+
 </html>
