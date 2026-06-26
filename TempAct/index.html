@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TempAct: Advancing Temporal Plausibility in Autoregressive Video Generation via Planner-Executor RL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #1a56db;
+      --primary-dark: #1145b8;
+      --accent: #e5edff;
+      --bg: #ffffff;
+      --surface: #f8faff;
+      --border: #e2e8f0;
+      --text: #1a202c;
+      --text-muted: #4a5568;
+      --text-light: #718096;
+      --tag-bg: #eef2ff;
+      --tag-text: #3730a3;
+      --highlight: #dbeafe;
+      --green: #16a34a;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.65;
+      font-size: 16px;
+    }
+
+    /* ── Header ─────────────────────────────────── */
+    header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 60%, #1a56db 100%);
+      color: #fff;
+      padding: 64px 24px 52px;
+      text-align: center;
+    }
+
+    .venue-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 20px;
+      padding: 4px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      margin-bottom: 22px;
+      backdrop-filter: blur(4px);
+    }
+
+    h1 {
+      font-size: clamp(22px, 3.5vw, 38px);
+      font-weight: 700;
+      line-height: 1.25;
+      max-width: 900px;
+      margin: 0 auto 28px;
+      letter-spacing: -0.3px;
+    }
+
+    h1 em { font-style: normal; color: #93c5fd; }
+
+    .authors {
+      font-size: 15px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.88);
+      max-width: 760px;
+      margin: 0 auto 8px;
+    }
+
+    .authors sup { font-size: 11px; }
+
+    .affiliations {
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      max-width: 800px;
+      margin: 0 auto 28px;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 8px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.18s ease;
+      border: 1.5px solid rgba(255,255,255,0.35);
+      color: #fff;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(4px);
+    }
+
+    .btn:hover {
+      background: rgba(255,255,255,0.22);
+      border-color: rgba(255,255,255,0.6);
+      transform: translateY(-1px);
+    }
+
+    .btn-icon { font-size: 16px; }
+
+    /* ── Layout ──────────────────────────────────── */
+    main { max-width: 960px; margin: 0 auto; padding: 0 24px 80px; }
+
+    section { padding: 56px 0 0; }
+
+    h2 {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text);
+      margin: 24px 0 10px;
+    }
+
+    p { color: var(--text-muted); margin-bottom: 14px; }
+    p:last-child { margin-bottom: 0; }
+
+    strong { color: var(--text); }
+
+    /* ── Abstract ────────────────────────────────── */
+    .abstract-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--primary);
+      border-radius: 10px;
+      padding: 28px 32px;
+    }
+
+    .abstract-box p {
+      font-size: 15.5px;
+      line-height: 1.75;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* ── Figures ─────────────────────────────────── */
+    .figure-wrap {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 24px 0;
+      text-align: center;
+    }
+
+    .figure-wrap embed,
+    .figure-wrap object,
+    .figure-wrap img {
+      width: 100%;
+      border-radius: 6px;
+      display: block;
+    }
+
+    .fig-pdf {
+      width: 100%;
+      aspect-ratio: 16 / 6;
+      border: none;
+      border-radius: 6px;
+    }
+
+    .fig-caption {
+      margin-top: 14px;
+      font-size: 13.5px;
+      color: var(--text-light);
+      line-height: 1.55;
+      text-align: left;
+    }
+
+    .fig-caption strong { color: var(--text-muted); }
+
+    /* ── Motivation Cards ─────────────────────────── */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin: 24px 0;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px 24px;
+    }
+
+    .card-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      margin-bottom: 14px;
+    }
+
+    .card h3 { margin-top: 0; font-size: 15px; color: var(--text); }
+    .card p { font-size: 14px; margin: 0; }
+
+    /* ── Pipeline steps ──────────────────────────── */
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin: 20px 0;
+    }
+
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 22px;
+    }
+
+    .step-num {
+      flex-shrink: 0;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .step-body h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+    .step-body p { font-size: 14px; margin: 0; }
+
+    /* ── Results Table ────────────────────────────── */
+    .table-wrap {
+      overflow-x: auto;
+      margin: 20px 0;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      min-width: 700px;
+    }
+
+    thead { background: var(--text); color: #fff; }
+
+    thead th {
+      padding: 12px 14px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    thead tr:first-child th { border-bottom: 1px solid rgba(255,255,255,0.15); }
+
+    tbody tr:nth-child(even) { background: var(--surface); }
+    tbody tr:hover { background: var(--highlight); }
+
+    tbody td {
+      padding: 10px 14px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+
+    tbody td:first-child { text-align: left; font-weight: 500; color: var(--text); }
+
+    .section-row td {
+      background: #f1f5f9;
+      font-weight: 600;
+      color: var(--text-light);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .highlight-row { background: #eff6ff !important; }
+    .highlight-row td { color: var(--text); }
+
+    .gain { color: #dc2626; font-size: 12px; font-weight: 600; }
+    .best { font-weight: 700; color: var(--primary-dark); }
+
+    /* ── Metric badges ─────────────────────────── */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin: 20px 0;
+    }
+
+    .metric-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 20px;
+      text-align: center;
+    }
+
+    .metric-value {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1.1;
+    }
+
+    .metric-up {
+      font-size: 13px;
+      color: var(--green);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    .metric-label {
+      font-size: 12.5px;
+      color: var(--text-light);
+      margin-top: 4px;
+    }
+
+    /* ── Ablation tables ─────────────────────────── */
+    .ablation-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    @media (max-width: 700px) {
+      .ablation-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── BibTeX ──────────────────────────────────── */
+    .bibtex-box {
+      background: #0f172a;
+      border-radius: 12px;
+      padding: 24px 28px;
+      position: relative;
+      margin-top: 12px;
+    }
+
+    .bibtex-box pre {
+      font-family: 'Source Code Pro', monospace;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #e2e8f0;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 14px; right: 14px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #e2e8f0;
+      border-radius: 6px;
+      padding: 5px 12px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .copy-btn:hover { background: rgba(255,255,255,0.2); }
+
+    /* ── Footer ──────────────────────────────────── */
+    footer {
+      background: #0f172a;
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 28px 24px;
+      font-size: 13px;
+    }
+
+    footer a { color: rgba(255,255,255,0.65); text-decoration: none; }
+    footer a:hover { color: #fff; }
+
+    /* ── Tags ────────────────────────────────────── */
+    .tag {
+      display: inline-block;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      border-radius: 5px;
+      padding: 2px 10px;
+      font-size: 12px;
+      font-weight: 500;
+      margin: 0 3px 6px 0;
+    }
+
+    /* ── Video Grid ─────────────────────────────── */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 20px 0;
+    }
+
+    .video-cell {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .video-cell video {
+      width: 100%;
+      border-radius: 8px;
+      background: #000;
+      display: block;
+    }
+
+    .video-label {
+      font-size: 12px;
+      color: var(--text-light);
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    .video-label strong {
+      display: block;
+      color: var(--text-muted);
+      font-size: 12.5px;
+    }
+
+    .video-row-caption {
+      grid-column: 1 / -1;
+      font-size: 11.5px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      text-align: left;
+      background: var(--accent);
+      border-radius: 6px;
+      padding: 8px 14px;
+      margin-bottom: 6px;
+    }
+
+    .video-row-caption strong { color: var(--text); }
+
+    .video-col-headers {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 4px;
+    }
+
+    .video-col-header {
+      text-align: center;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      padding: 6px 0;
+      background: var(--accent);
+      border-radius: 6px;
+    }
+
+    @media (max-width: 640px) {
+      .video-grid { grid-template-columns: 1fr; }
+      .video-col-headers { grid-template-columns: 1fr; }
+    }
+
+    /* ── Responsive ──────────────────────────────── */
+    @media (max-width: 600px) {
+      h1 { font-size: 22px; }
+      h2 { font-size: 21px; }
+      .abstract-box { padding: 20px; }
+      .bibtex-box { padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════ HEADER ══════════════════ -->
+<header>
+  <h1><em>TempAct</em>: Advancing Temporal Plausibility in Autoregressive Video Generation via Planner-Executor RL</h1>
+
+  <div class="authors">
+    Jing Wang<sup>1,2,*</sup>, &nbsp;Xiangxin Zhou<sup>2,*</sup>, &nbsp;Jiajun Liang<sup>3,¶</sup>, &nbsp;Kaiqi Liu<sup>4</sup>, &nbsp;Wanyun Pang<sup>5</sup>,<br>
+    Zhenyu Xie<sup>1</sup>, &nbsp;Tianyu Pang<sup>2,‡</sup>, &nbsp;Xiaodan Liang<sup>1,‡</sup>
+  </div>
+  <div class="affiliations">
+    <sup>1</sup>Shenzhen Campus of Sun Yat-Sen University,
+    <sup>2</sup>Tencent Hunyuan,
+    <sup>3</sup>Tsinghua University,
+    <sup>4</sup>Peking University,
+    <sup>5</sup>USTB<br>
+    <sup>*</sup>Equal contribution &nbsp;&nbsp; <sup>¶</sup>Project Lead &nbsp;&nbsp; <sup>‡</sup>Corresponding Author
+  </div>
+
+  <div class="links">
+    <a class="btn" href="#"><span class="btn-icon">📄</span> Paper</a>
+    <a class="btn" href="https://github.com/jingw193/TampAct"><span class="btn-icon">💻</span> Code</a>
+    <a class="btn" href="#bibtex"><span class="btn-icon">📌</span> BibTeX</a>
+  </div>
+</header>
+
+<!-- ══════════════════ MAIN ══════════════════ -->
+<main>
+
+  <!-- Overview Figure -->
+  <section>
+    <div class="figure-wrap">
+      <img src="asset/figure1.png" alt="TempAct Overview and Motivation" />
+      <p class="fig-caption">
+        <strong>Figure 1. Overview and Motivation of TempAct.</strong>
+        <strong>Framework:</strong> Single-prompt AR generation conditions every chunk on the same global instruction, while step-prompt generation provides explicit stage-wise conditions but still relies on a fixed executor. TempAct introduces a planner–executor RL framework that jointly optimizes temporal decomposition and prompt-transition execution.
+        <strong>Qualitative comparison:</strong> Compared with single-prompt and step-prompt baselines, TempAct produces more faithful event progression under temporally complex instructions.
+        <strong>Training dynamics:</strong> The increasing reward curve shows that hierarchical planner–executor optimization provides effective learning signals for temporal plausibility.
+      </p>
+    </div>
+  </section>
+
+  <!-- Abstract -->
+  <section>
+    <h2>Abstract</h2>
+    <div class="abstract-box">
+      <p>
+        Autoregressive (AR) video diffusion models enable low-latency streaming generation by synthesizing videos chunk by chunk with cached visual context, but this chunk-wise formulation makes temporal instruction following ambiguous. A single global prompt does not specify which sub-event should be realized in each chunk, while naively switching to step-wise prompts often leads to delayed reactions, blended step semantics, and error propagation across prompt transitions. These failures are difficult to address with supervised fine-tuning or distillation alone: SFT suffers from exposure bias, while rollout-based distillation still optimizes low-level denoising or teacher-distribution matching rather than directly enforcing action ordering and prompt-transition correctness.
+      </p>
+      <br>
+      <p>
+        We address these challenges with <strong>TempAct</strong>, a planner--executor reinforcement learning framework that jointly optimizes temporal decomposition and step-conditioned execution for temporally plausible AR video generation. TempAct uses an LLM planner to explore span-aware step prompts that are executable by the video model, and trains an AR diffusion executor to follow these prompts under its own generated histories. Its key mechanism is hierarchical group exploration: candidate plans form planning groups, and each plan induces an execution group of multiple continuations from a shared visual context, enabling plan-level credit assignment for long-horizon temporal outcomes and executor-level credit assignment for prompt-switch behavior. We further design hierarchical rewards that combine plan-quality and full-video temporal feedback for the planner with local transition-level step-following rewards, aesthetic regularization, and KL constraints for the executor. Experiments on Self-Forcing and LongLive show that TempAct improves temporal consistency while preserving overall visual quality.
+      </p>
+    </div>
+
+    <!-- Keyword tags -->
+    <div style="margin-top:16px;">
+      <span class="tag">Autoregressive Video Generation</span>
+      <span class="tag">Reinforcement Learning</span>
+      <span class="tag">Temporal Planning</span>
+      <span class="tag">Diffusion Models</span>
+      <span class="tag">Flow-GRPO</span>
+      <span class="tag">GSPO</span>
+      <span class="tag">Prompt Engineering</span>
+    </div>
+  </section>
+
+  <!-- Motivation -->
+  <section>
+    <h2>Motivation</h2>
+    <p>
+      Existing AR video generators face two fundamental failures when executing temporally complex instructions:
+    </p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🌀</div>
+        <h3>Temporal Confusion (Single Prompt)</h3>
+        <p>The model knows the full instruction but not <em>which part</em> should be realized now. Actions from later stages bleed into early chunks — a dog holding the ball while still sitting.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <h3>Prompt-Switch Failures (Step Prompts)</h3>
+        <p>Step-wise prompts clarify the current stage but expose <em>delayed reactions</em>, <em>blended semantics</em>, and <em>error propagation</em> across chunks when the prompt transitions.</p>
+      </div>
+    </div>
+    <p>
+      These failures are difficult to address with supervised fine-tuning or distillation alone: SFT suffers from exposure bias, while rollout-based distillation still optimizes low-level denoising or teacher-distribution matching rather than directly enforcing action ordering and prompt-transition correctness. This motivates <strong>reinforcement learning</strong> as a direct solution.
+    </p>
+  </section>
+
+  <!-- Method -->
+  <section>
+    <h2>Method: TempAct</h2>
+    <p>
+      TempAct treats temporal video generation as a <strong>coupled decision-making problem</strong>: an LLM planner decomposes global instructions into span-aware steps, and an AR diffusion executor realizes these steps under accumulated visual context. Crucially, the LLM is not a fixed preprocessing module — both components are jointly optimized from generated trajectories.
+    </p>
+
+    <div class="figure-wrap">
+      <img src="asset/method.png" alt="TempAct Method Overview" />
+      <p class="fig-caption">
+        <strong>Figure 2. TempAct Pipeline.</strong>
+        An LLM planner samples span-aware temporal decompositions of a global instruction, while an autoregressive video executor rolls out shared contexts and multiple continuations under the corresponding step prompts. The nested planning–execution groups support hierarchical credit assignment.
+      </p>
+    </div>
+
+    <h3>Hierarchical Planner–Executor Pipeline</h3>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4>LLM-based Temporal Planning</h4>
+          <p>The planner <em>π<sub>φ</sub></em> samples <em>M</em> candidate temporal decompositions. Each plan assigns span-aware step prompts to latent-frame intervals, covering action ordering, temporal granularity, and state descriptions.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4>Prompt Smoothing</h4>
+          <p>Each span uses a smoothed prompt <em>s̃<sub>j</sub> = Smooth(s<sub>j</sub>, s<sub>j+1</sub>)</em> that exposes the executor to both the current and upcoming subgoal, reducing abrupt semantic changes at transitions.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4>Hierarchical Autoregressive Sampling</h4>
+          <p>For each plan, a shared visual context is generated up to the prompt-switch moment, then <em>N</em> continuations are sampled. This creates a nested group structure that isolates planning and execution quality.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h4>Joint RL Optimization</h4>
+          <p>The planner is updated with <strong>GSPO</strong> (sequence-level policy gradients) using plan-quality and full-video rewards. The executor is updated with <strong>Flow-GRPO</strong> on the first transition chunk only, with local step-following + aesthetic rewards.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3>Multi-level Reward Design</h3>
+    <div class="cards" style="grid-template-columns: repeat(4, 1fr);">
+      <div class="card">
+        <div class="card-icon">📋</div>
+        <h3>Plan Quality Score (Planner)</h3>
+        <p>Qwen3-8B judges faithfulness to the original instruction, event coverage, temporal coherence, and hallucination avoidance across candidate decompositions.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎬</div>
+        <h3>Temporal-Following Score (Planner)</h3>
+        <p>Qwen3-VL-8B evaluates full-video temporal order, physical consistency, and text-video alignment — averaged over all execution continuations per plan.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔍</div>
+        <h3>Local Step-Following Score (Executor)</h3>
+        <p>VLM-based reward computed only on the first transition span, directly measuring prompt-switch execution rather than coarse full-video feedback.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎨</div>
+        <h3>Aesthetic Quality Score (Executor)</h3>
+        <p>PickScore on the same transition chunk prevents semantic optimization from degrading visual quality during executor RL updates.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results -->
+  <section>
+    <h2>Experiments</h2>
+
+    <p>
+      We evaluate on a <strong>Temporal Order Benchmark</strong> with two subsets: Simple Set (100 prompts, 1–2 ordered steps) and Hard Set (100 prompts, 3–4 steps with complex dependencies). We report scores under both an in-domain judge (Qwen3-VL-8B) and an out-of-domain judge (Gemini-3-Flash) to test generalization.
+    </p>
+
+    <!-- Key metrics -->
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-value">+15.5%</div>
+        <div class="metric-up">↑ Avg Temporal Order</div>
+        <div class="metric-label">Self-Forcing backbone</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value">+13.0%</div>
+        <div class="metric-up">↑ Avg Temporal Order</div>
+        <div class="metric-label">LongLive backbone</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value">+24.9%</div>
+        <div class="metric-up">↑ Hard Set (Qwen judge)</div>
+        <div class="metric-label">Self-Forcing</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value">81%</div>
+        <div class="metric-up">Agreement with humans</div>
+        <div class="metric-label">Gemini-3-Flash judge</div>
+      </div>
+    </div>
+
+    <h3>Main Results</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th rowspan="3" style="text-align:left; min-width:170px;">Method</th>
+            <th colspan="5">Temporal Order Score</th>
+            <th colspan="3">VBench</th>
+            <th rowspan="3">PickScore</th>
+          </tr>
+          <tr>
+            <th colspan="2">Simple Set (1–2 Steps)</th>
+            <th colspan="2">Hard Set (3–4 Steps)</th>
+            <th rowspan="2">Avg.</th>
+            <th rowspan="2">Total</th>
+            <th rowspan="2">Quality</th>
+            <th rowspan="2">Semantic</th>
+          </tr>
+          <tr>
+            <th>Qwen</th><th>Gemini</th>
+            <th>Qwen</th><th>Gemini</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="section-row"><td colspan="10">Single-prompt video generation</td></tr>
+          <tr>
+            <td>Self-Forcing</td>
+            <td>0.410</td><td>0.456</td>
+            <td>0.240</td><td>0.419</td>
+            <td>0.381</td>
+            <td>81.20</td><td>83.80</td><td>70.50</td><td>20.7</td>
+          </tr>
+          <tr>
+            <td>Casual Forcing</td>
+            <td>0.381</td><td>0.447</td>
+            <td>0.304</td><td>0.452</td>
+            <td>0.396</td>
+            <td>80.85</td><td>84.02</td><td>68.18</td><td>20.8</td>
+          </tr>
+          <tr>
+            <td>LongLive</td>
+            <td>0.428</td><td>0.505</td>
+            <td>0.302</td><td>0.463</td>
+            <td>0.424</td>
+            <td>80.36</td><td>82.72</td><td>70.91</td><td>21.1</td>
+          </tr>
+          <tr class="section-row"><td colspan="10">Step-prompt video generation</td></tr>
+          <tr>
+            <td>Self-Forcing</td>
+            <td>0.414</td><td>0.485</td>
+            <td>0.269</td><td>0.431</td>
+            <td>0.400</td>
+            <td>80.07</td><td>82.89</td><td>68.82</td><td>20.6</td>
+          </tr>
+          <tr class="highlight-row">
+            <td><strong>+ TempAct</strong></td>
+            <td class="best">0.500 <span class="gain">+20.8%</span></td>
+            <td class="best">0.538 <span class="gain">+10.9%</span></td>
+            <td class="best">0.336 <span class="gain">+24.9%</span></td>
+            <td class="best">0.473 <span class="gain">+9.7%</span></td>
+            <td class="best">0.462 <span class="gain">+15.5%</span></td>
+            <td>79.99</td><td>82.71</td><td>69.14</td><td>20.6</td>
+          </tr>
+          <tr>
+            <td>LongLive</td>
+            <td>0.411</td><td>0.521</td>
+            <td>0.314</td><td>0.481</td>
+            <td>0.432</td>
+            <td>79.55</td><td>82.10</td><td>69.35</td><td>20.8</td>
+          </tr>
+          <tr class="highlight-row">
+            <td><strong>+ TempAct</strong></td>
+            <td class="best">0.508 <span class="gain">+23.6%</span></td>
+            <td class="best">0.579 <span class="gain">+11.1%</span></td>
+            <td class="best">0.352 <span class="gain">+12.1%</span></td>
+            <td class="best">0.512 <span class="gain">+6.4%</span></td>
+            <td class="best">0.488 <span class="gain">+13.0%</span></td>
+            <td>79.97</td><td>82.61</td><td>69.40</td><td>20.8</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:13px; color:var(--text-light); margin-top:6px;">
+      Temporal Order scores are in [0,1]. Avg. averages the four Temporal Order scores across Simple/Hard sets and both judges.
+    </p>
+
+    <h3>Qualitative Comparison — Self-Forcing</h3>
+    <div class="figure-wrap">
+      <div class="video-col-headers">
+        <div class="video-col-header">Single Prompt</div>
+        <div class="video-col-header">Step Prompt</div>
+        <div class="video-col-header">TempAct (Ours)</div>
+      </div>
+      <div class="video-grid">
+        <!-- Row 1 -->
+        <div class="video-row-caption"><strong>Example 1.</strong> A chef in a white apron stands at a wooden cutting board on a kitchen counter. First, she places a ripe tomato on the board and steadies it with one hand. Next, she picks up a sharp chef's knife and slices the tomato into neat, even rounds. Finally, she arranges the slices in a careful row on a clean white plate and steps back.</div>
+        <div class="video-cell">
+          <video autoplay controls muted loop playsinline>
+            <source src="asset/sf_single_1.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="video-cell">
+          <video autoplay controls muted loop playsinline>
+            <source src="asset/sf_step_1.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="video-cell">
+          <video autoplay controls muted loop playsinline>
+            <source src="asset/sf_tempact_1.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <!-- Row 2 -->
+        <div class="video-row-caption"><strong>Example 2.</strong> A golden retriever sits on a grassy lawn with a rubber ball lying on the grass a short distance in front of it. First, it fixes its gaze on the ball and crouches low, hindquarters raised. Next, it pounces forward, covering the short gap in two quick bounds, and snatches the ball firmly in its mouth. Finally, it trots back and drops the ball precisely at its owner's feet.</div>
+        <div class="video-cell">
+          <video autoplay controls muted loop playsinline>
+            <source src="asset/sf_single_2.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="video-cell">
+          <video autoplay controls muted loop playsinline>
+            <source src="asset/sf_step_2.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="video-cell">
+          <video autoplay controls muted loop playsinline>
+            <source src="asset/sf_tempact_2.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <!-- Row 3 -->
+        <div class="video-row-caption"><strong>Example 3.</strong> A small brown squirrel sits on a patch of bare ground near a tree root. First, it picks up an acorn with its front paws and examines it closely, turning it over. Next, it sets the acorn down and begins digging a small hole in the soft soil with rapid scratching motions. Finally, it drops the acorn into the hole and pushes loose dirt back over it, patting the surface flat with its paws.</div>
+        <div class="video-cell">
+          <video autoplay controls muted loop playsinline>
+            <source src="asset/sf_single_3.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="video-cell">
+          <video autoplay controls muted loop playsinline>
+            <source src="asset/sf_step_3.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="video-cell">
+          <video autoplay controls muted loop playsinline>
+            <source src="asset/sf_tempact_3.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+      <p class="fig-caption">
+        <strong>Figure 3.</strong> Qualitative comparison on temporally ordered prompts using the Self-Forcing backbone.
+        Single-prompt generation blends actions across chunks; step prompts improve stage clarity but still miss state transitions (e.g., squirrel leaving acorn on ground instead of burying it); TempAct correctly realizes the intended event progression.
+      </p>
+    </div>
+
+    <h3>Qualitative Comparison — LongLive</h3>
+    <div class="figure-wrap">
+      <div class="video-col-headers">
+        <div class="video-col-header">Single Prompt</div>
+        <div class="video-col-header">Step Prompt</div>
+        <div class="video-col-header">TempAct (Ours)</div>
+      </div>
+      <div class="video-grid">
+        <!-- Row 1 -->
+        <div class="video-row-caption"><strong>Example 1.</strong>A woman sits down at a vanity table in a softly lit bedroom. First, she opens a wooden jewelry box and takes out a delicate pearl necklace. Next, she holds the necklace up to the light for a moment. Finally, she carefully fastens the necklace around her neck and closes the jewelry box.</div>
+        <div class="video-cell">
+          <video autoplay controls muted loop playsinline>
+            <source src="asset/ll_single_1.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="video-cell">
+          <video autoplay controls muted loop playsinline>
+            <source src="asset/ll_step_1.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="video-cell">
+          <video autoplay controls muted loop playsinline>
+            <source src="asset/ll_tempact_1.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <!-- Row 2 -->
+        <div class="video-row-caption"><strong>Example 2.</strong> A woman stands at a kitchen counter preparing a salad. First, she tears large lettuce leaves and places them in a wooden bowl. Next, she slices a cucumber into thin rounds and scatters them over the lettuce. Finally, she drizzles olive oil over the salad and uses two large spoons to gently toss everything together.</div>
+        <div class="video-cell">
+          <video autoplay controls muted loop playsinline>
+            <source src="asset/ll_single_2.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="video-cell">
+          <video autoplay controls muted loop playsinline>
+            <source src="asset/ll_step_2.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="video-cell">
+          <video autoplay controls muted loop playsinline>
+            <source src="asset/ll_tempact_2.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <!-- Row 3 -->
+        <div class="video-row-caption"><strong>Example 3.</strong> A young man is at a clean wooden desk in a modern office. First, he carefully places his closed silver laptop on the right side of the desk. Next, he picks up a small black notebook that is already on the desk. Finally, he opens the notebook to a blank page and holds it as if ready to write.</div>
+        <div class="video-cell">
+          <video autoplay controls muted loop playsinline>
+            <source src="asset/ll_single_3.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="video-cell">
+          <video autoplay controls muted loop playsinline>
+            <source src="asset/ll_step_3.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="video-cell">
+          <video autoplay controls muted loop playsinline>
+            <source src="asset/ll_tempact_3.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+      <p class="fig-caption">
+        <strong>Figure 4.</strong> Qualitative comparison on temporally ordered prompts using the LongLive backbone.
+        TempAct consistently produces videos with more faithful event ordering and cleaner prompt-switch execution than both single-prompt and step-prompt baselines.
+      </p>
+    </div>
+  </section>
+
+  <!-- BibTeX -->
+  <section id="bibtex">
+    <h2>BibTeX</h2>
+    <p>If you find TempAct useful, please cite our work:</p>
+    <div class="bibtex-box">
+      <button class="copy-btn" onclick="copyBibtex()">Copy</button>
+      <pre id="bibtex-text">@inproceedings{wang2026tempact,
+  title     = {TempAct: Advancing Temporal Plausibility in Autoregressive Video Generation
+               via Planner-Executor RL},
+  author    = {Wang, Jing and Zhou, Xiangxin and Liang, Jiajun and Liu, Kaiqi
+               and Pang, Wanyuan and Xie, Zhenyu and Pang, Tianyu and Liang, Xiaodan},
+  year      = {2026}
+}</pre>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>TempAct &nbsp;·&nbsp; ICLR 2026 &nbsp;·&nbsp;
+    <a href="mailto:wangj977@mail2.sysu.edu.cn">wangj977@mail2.sysu.edu.cn</a>
+  </p>
+  <p style="margin-top:6px;">Page design inspired by <a href="https://jingw193.github.io/GRPO-Guard/" target="_blank">GRPO-Guard</a></p>
+</footer>
+
+<script>
+  function copyBibtex() {
+    const text = document.getElementById('bibtex-text').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.querySelector('.copy-btn');
+      btn.textContent = 'Copied!';
+      setTimeout(() => btn.textContent = 'Copy', 2000);
+    });
+  }
+</script>
+
+</body>
+</html>
